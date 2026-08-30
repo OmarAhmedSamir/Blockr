@@ -1,0 +1,4229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Blockr – Free Website & Distraction Blocker
+    </title>
+
+    <meta
+        name="description"
+        content="Blockr is a free website and distraction blocker for focus, study, work, deep work, and productivity. Block distracting websites, social media, gaming, entertainment, and time-wasting sites."
+    >
+
+    <meta
+        name="keywords"
+        content="website blocker, free website blocker, distraction blocker, free distraction blocker, site blocker, social media blocker, focus tool, focus timer, productivity extension, study tool, study productivity, deep work, website blocking, block distracting websites"
+    >
+
+    <meta
+        name="author"
+        content="RakkeZ"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080808"
+    >
+
+    <!-- Open Graph -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="Blockr – Free Website & Distraction Blocker"
+    >
+
+    <meta
+        property="og:description"
+        content="Block distractions. Focus on what matters. Block distracting websites, social media, gaming, entertainment, and time-wasting sites."
+    >
+
+    <meta
+        property="og:url"
+        content="https://YOUR-DOMAIN.com/blockr"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Blockr"
+    >
+
+    <!-- Twitter -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Blockr – Free Website & Distraction Blocker"
+    >
+
+    <meta
+        name="twitter:description"
+        content="A free website blocker designed to help you focus, study, work, and reduce digital distractions."
+    >
+
+    <!-- Canonical -->
+
+    <link
+        rel="canonical"
+        href="https://YOUR-DOMAIN.com/blockr"
+    >
+
+    <!-- Fonts -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Blockr",
+        "applicationCategory": "BrowserApplication",
+        "operatingSystem": "Microsoft Edge",
+        "description": "Free website and distraction blocker designed to help users focus, study, work, and improve productivity.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "brand": {
+            "@type": "Brand",
+            "name": "Blockr"
+        }
+    }
+    </script>
+
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --yellow: #ffd84d;
+    --yellow-soft: #ffe99a;
+
+    --black: #060606;
+    --black-2: #0b0b0b;
+    --black-3: #101010;
+
+    --white: #f6f6f6;
+
+    --text: #e9e9e9;
+
+    --muted: #969696;
+
+    --muted-2: #646464;
+
+    --line: rgba(255,255,255,0.08);
+
+    --human: "Caveat", cursive;
+
+    --display: "Space Grotesk", sans-serif;
+
+    --body: "DM Sans", sans-serif;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,216,77,0.08),
+            transparent 35%
+        ),
+        var(--black);
+
+    color: var(--text);
+
+    font-family: var(--body);
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+button {
+
+    font-family: inherit;
+
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1000;
+
+    opacity: 0.035;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,0.8) 0.5px,
+            transparent 0.7px
+        );
+
+    background-size: 5px 5px;
+
+    mix-blend-mode: soft-light;
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background-glow {
+
+    position: fixed;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(255,216,77,0.035);
+
+    filter: blur(120px);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+}
+
+
+.glow-one {
+
+    top: -250px;
+
+    left: -200px;
+
+}
+
+
+.glow-two {
+
+    right: -300px;
+
+    top: 45%;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.nav {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 500;
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        backdrop-filter .3s ease;
+
+}
+
+
+.nav.scrolled {
+
+    background: rgba(6,6,6,.82);
+
+    border-color: var(--line);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+}
+
+
+.nav-inner {
+
+    width: min(1180px, calc(100% - 40px));
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.brand-mark {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--yellow);
+
+    color: #111;
+
+    border-radius: 10px 11px 9px 12px;
+
+    font-family: var(--display);
+
+    font-weight: 800;
+
+    transform: rotate(-2deg);
+
+}
+
+
+.brand-name {
+
+    font-family: var(--display);
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.brand-name span {
+
+    color: var(--yellow);
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+
+.nav-links a {
+
+    color: #999;
+
+    font-size: 13px;
+
+    transition: color .2s ease;
+
+}
+
+
+.nav-links a:hover {
+
+    color: white;
+
+}
+
+
+.nav-install {
+
+    padding: 10px 16px;
+
+    background: var(--yellow);
+
+    color: #111;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.nav-install:hover {
+
+    transform: translateY(-2px) rotate(-.5deg);
+
+    box-shadow:
+        0 10px 30px rgba(255,216,77,.12);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 900px;
+
+    padding:
+        150px 20px 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+}
+
+
+.hero-inner {
+
+    width: min(1120px, 100%);
+
+    text-align: center;
+
+}
+
+
+.hero-note {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 22px;
+
+    transform: rotate(-2deg);
+
+}
+
+
+.hero h1 {
+
+    max-width: 920px;
+
+    margin: 0 auto;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        48px,
+        8vw,
+        94px
+    );
+
+    line-height: .98;
+
+    letter-spacing: -5px;
+
+    color: white;
+
+}
+
+
+.hero h1 .highlight {
+
+    position: relative;
+
+    display: inline-block;
+
+    color: var(--yellow);
+
+}
+
+
+.hero h1 .highlight::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: -5px;
+
+    bottom: -8px;
+
+    height: 6px;
+
+    background: var(--yellow);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-1.5deg)
+        skewX(-12deg);
+
+    opacity: .65;
+
+}
+
+
+.hero-description {
+
+    max-width: 610px;
+
+    margin: 30px auto 0;
+
+    color: #929292;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+}
+
+
+.hero-actions {
+
+    margin-top: 34px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 13px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.primary-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border-radius: 13px;
+
+    background: var(--yellow);
+
+    color: #101010;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 15px 40px rgba(255,216,77,.10);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.primary-btn:hover {
+
+    transform:
+        translateY(-3px)
+        rotate(-.5deg);
+
+    box-shadow:
+        0 20px 50px rgba(255,216,77,.18);
+
+}
+
+
+.secondary-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 24px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 13px;
+
+    color: #d0d0d0;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.secondary-btn:hover {
+
+    border-color:
+        rgba(255,216,77,.3);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.hero-free {
+
+    margin-top: 20px;
+
+    color: #656565;
+
+    font-size: 11px;
+
+}
+
+
+.hero-free strong {
+
+    color: #aaa;
+
+}
+
+
+/* =========================================================
+   PRODUCT PREVIEW
+========================================================= */
+
+.preview-wrap {
+
+    margin: 75px auto 0;
+
+    width: min(930px, 100%);
+
+    position: relative;
+
+}
+
+
+.preview {
+
+    position: relative;
+
+    min-height: 430px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #080808
+        );
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    border-radius:
+        24px 20px 27px 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.55);
+
+    transform:
+        rotate(-.3deg);
+
+}
+
+
+.browser-bar {
+
+    height: 48px;
+
+    border-bottom: 1px solid var(--line);
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 17px;
+
+    gap: 7px;
+
+}
+
+
+.browser-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #444;
+
+}
+
+
+.browser-address {
+
+    margin-left: 15px;
+
+    height: 25px;
+
+    flex: 1;
+
+    max-width: 500px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.04);
+
+    color: #555;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 12px;
+
+    font-size: 10px;
+
+}
+
+
+.preview-content {
+
+    min-height: 382px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+}
+
+
+.preview-left {
+
+    padding: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.preview-logo {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--yellow);
+
+    color: #111;
+
+    border-radius: 12px 14px 11px 13px;
+
+    font-weight: 900;
+
+    font-size: 21px;
+
+    transform: rotate(-2deg);
+
+}
+
+
+.preview-left h3 {
+
+    margin-top: 20px;
+
+    font-family: var(--display);
+
+    font-size: 32px;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.preview-left p {
+
+    margin-top: 12px;
+
+    max-width: 340px;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+.preview-site {
+
+    margin-top: 22px;
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 22px;
+
+}
+
+
+.preview-right {
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.block-panel {
+
+    width: 270px;
+
+    padding: 25px;
+
+    background: #0d0d0d;
+
+    border: 1px solid var(--line);
+
+    border-radius:
+        18px 15px 20px 16px;
+
+    transform:
+        rotate(1.2deg);
+
+}
+
+
+.panel-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.panel-title {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.live {
+
+    font-size: 8px;
+
+    color: var(--yellow);
+
+    letter-spacing: 1px;
+
+}
+
+
+.timer {
+
+    margin-top: 25px;
+
+    font-family: var(--display);
+
+    font-size: 44px;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+}
+
+
+.panel-label {
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 9px;
+
+}
+
+
+.fake-sites {
+
+    margin-top: 23px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.fake-site {
+
+    padding: 9px 10px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.035);
+
+    color: #777;
+
+    font-size: 10px;
+
+}
+
+
+.fake-site span {
+
+    float: right;
+
+    color: var(--yellow);
+
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.trust {
+
+    width: min(1050px, calc(100% - 40px));
+
+    margin: -15px auto 120px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.trust-item {
+
+    padding: 25px;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+
+.trust-item:not(:last-child)::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 25%;
+
+    height: 50%;
+
+    width: 1px;
+
+    background: var(--line);
+
+}
+
+
+.trust-icon {
+
+    color: var(--yellow);
+
+    font-size: 17px;
+
+}
+
+
+.trust-item strong {
+
+    display: block;
+
+    margin-top: 7px;
+
+    font-family: var(--display);
+
+    font-size: 13px;
+
+}
+
+
+.trust-item span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #666;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section {
+
+    width: min(1120px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 120px 0;
+
+}
+
+
+.section-header {
+
+    max-width: 650px;
+
+    margin-bottom: 60px;
+
+}
+
+
+.hand {
+
+    display: inline-block;
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 23px;
+
+    transform: rotate(-2deg);
+
+}
+
+
+.section-title {
+
+    margin-top: 8px;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        36px,
+        5vw,
+        60px
+    );
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    color: white;
+
+}
+
+
+.section-description {
+
+    margin-top: 18px;
+
+    color: #777;
+
+    max-width: 570px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   FEATURE GRID
+========================================================= */
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.feature {
+
+    min-height: 250px;
+
+    padding: 27px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    border: 1px solid var(--line);
+
+    border-radius:
+        17px 20px 16px 22px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+
+}
+
+
+.feature:nth-child(2) {
+
+    transform: translateY(18px) rotate(.4deg);
+
+}
+
+
+.feature:nth-child(3) {
+
+    transform: rotate(-.5deg);
+
+}
+
+
+.feature:nth-child(5) {
+
+    transform: translateY(15px) rotate(-.3deg);
+
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-5px)
+        rotate(0deg);
+
+    border-color:
+        rgba(255,216,77,.2);
+
+}
+
+
+.feature-number {
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.feature-icon {
+
+    margin-top: 25px;
+
+    color: var(--yellow);
+
+    font-size: 25px;
+
+}
+
+
+.feature h3 {
+
+    margin-top: 15px;
+
+    font-family: var(--display);
+
+    font-size: 17px;
+
+    letter-spacing: -.5px;
+
+}
+
+
+.feature p {
+
+    margin-top: 9px;
+
+    color: #707070;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   BIG SPLIT
+========================================================= */
+
+.split {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+.split.reverse {
+
+    direction: rtl;
+
+}
+
+
+.split.reverse > * {
+
+    direction: ltr;
+
+}
+
+
+.split-text h2 {
+
+    margin-top: 8px;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        34px,
+        5vw,
+        58px
+    );
+
+    letter-spacing: -3px;
+
+    line-height: 1;
+
+}
+
+
+.split-text p {
+
+    margin-top: 20px;
+
+    max-width: 500px;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+.hand-list {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+}
+
+
+.hand-list div {
+
+    color: #aaa;
+
+    font-size: 12px;
+
+}
+
+
+.hand-list span {
+
+    color: var(--yellow);
+
+    margin-right: 8px;
+
+}
+
+
+.visual {
+
+    min-height: 420px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   BLOCK VISUAL
+========================================================= */
+
+.block-visual {
+
+    width: min(410px, 100%);
+
+    position: relative;
+
+}
+
+
+.block-window {
+
+    background: #0b0b0b;
+
+    border: 1px solid var(--line);
+
+    border-radius: 19px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35);
+
+    transform:
+        rotate(-1deg);
+
+}
+
+
+.block-window-top {
+
+    display: flex;
+
+    gap: 6px;
+
+}
+
+
+.block-window-top i {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #3a3a3a;
+
+}
+
+
+.block-message {
+
+    text-align: center;
+
+    padding: 55px 20px;
+
+}
+
+
+.block-message .x {
+
+    width: 56px;
+
+    height: 56px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,216,77,.08);
+
+    color: var(--yellow);
+
+    font-size: 22px;
+
+}
+
+
+.block-message h3 {
+
+    margin-top: 20px;
+
+    font-family: var(--display);
+
+    font-size: 25px;
+
+}
+
+
+.block-message p {
+
+    margin: 10px auto 0;
+
+    max-width: 260px;
+
+    color: #666;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.block-note {
+
+    position: absolute;
+
+    right: -25px;
+
+    top: 20px;
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 21px;
+
+    transform: rotate(7deg);
+
+}
+
+
+/* =========================================================
+   TIMER VISUAL
+========================================================= */
+
+.timer-visual {
+
+    width: min(390px,100%);
+
+    padding: 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101010,
+            #080808
+        );
+
+    border: 1px solid var(--line);
+
+    border-radius:
+        23px 18px 25px 20px;
+
+    transform:
+        rotate(1deg);
+
+}
+
+
+.timer-visual small {
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.big-timer {
+
+    margin-top: 15px;
+
+    font-family: var(--display);
+
+    font-size: 72px;
+
+    line-height: 1;
+
+    letter-spacing: -5px;
+
+}
+
+
+.timer-bar {
+
+    margin-top: 25px;
+
+    height: 4px;
+
+    background: #1d1d1d;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.timer-bar span {
+
+    display: block;
+
+    width: 68%;
+
+    height: 100%;
+
+    background: var(--yellow);
+
+}
+
+
+.timer-status {
+
+    margin-top: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #555;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   FREE SECTION
+========================================================= */
+
+.free-section {
+
+    padding:
+        100px 30px;
+
+    text-align: center;
+
+}
+
+
+.free-box {
+
+    width: min(900px, 100%);
+
+    margin: auto;
+
+    padding:
+        70px 30px;
+
+    position: relative;
+
+    border-top:
+        1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.free-label {
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 26px;
+
+    transform: rotate(-2deg);
+
+    display: inline-block;
+
+}
+
+
+.free-box h2 {
+
+    margin-top: 5px;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        40px,
+        7vw,
+        76px
+    );
+
+    letter-spacing: -4px;
+
+    line-height: .95;
+
+}
+
+
+.free-box h2 span {
+
+    color: var(--yellow);
+
+}
+
+
+.free-box p {
+
+    max-width: 550px;
+
+    margin: 20px auto 0;
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.free-points {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.free-point {
+
+    color: #aaa;
+
+    font-size: 11px;
+
+}
+
+
+.free-point b {
+
+    color: var(--yellow);
+
+    margin-right: 5px;
+
+}
+
+
+/* =========================================================
+   USE CASES
+========================================================= */
+
+.use-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+
+}
+
+
+.use {
+
+    min-height: 230px;
+
+    padding: 30px;
+
+    border: 1px solid var(--line);
+
+    background: rgba(255,255,255,.018);
+
+    border-radius:
+        19px 16px 22px 18px;
+
+}
+
+
+.use:nth-child(odd) {
+
+    transform:
+        rotate(-.35deg);
+
+}
+
+
+.use:nth-child(even) {
+
+    transform:
+        translateY(15px)
+        rotate(.35deg);
+
+}
+
+
+.use-tag {
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 18px;
+
+}
+
+
+.use h3 {
+
+    margin-top: 8px;
+
+    font-family: var(--display);
+
+    font-size: 22px;
+
+}
+
+
+.use p {
+
+    margin-top: 12px;
+
+    color: #6f6f6f;
+
+    max-width: 440px;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   PRIVACY
+========================================================= */
+
+.privacy {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.2fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+}
+
+
+.privacy-visual {
+
+    position: relative;
+
+    min-height: 340px;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+
+.shield {
+
+    width: 170px;
+
+    height: 200px;
+
+    background:
+        rgba(255,216,77,.06);
+
+    border:
+        1px solid rgba(255,216,77,.2);
+
+    clip-path:
+        polygon(
+            50% 0,
+            90% 15%,
+            84% 65%,
+            50% 100%,
+            16% 65%,
+            10% 15%
+        );
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--yellow);
+
+    font-size: 40px;
+
+    transform:
+        rotate(-3deg);
+
+}
+
+
+.privacy-note {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    right: 10px;
+
+    color: #666;
+
+    font-family: var(--human);
+
+    font-size: 19px;
+
+    transform: rotate(4deg);
+
+}
+
+
+.privacy-list {
+
+    margin-top: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+
+.privacy-item {
+
+    display: flex;
+
+    gap: 13px;
+
+    align-items: flex-start;
+
+}
+
+
+.privacy-check {
+
+    color: var(--yellow);
+
+    font-size: 13px;
+
+}
+
+
+.privacy-item strong {
+
+    display: block;
+
+    font-family: var(--display);
+
+    font-size: 13px;
+
+}
+
+
+.privacy-item span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #686868;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.steps {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 40px;
+
+}
+
+
+.step {
+
+    position: relative;
+
+}
+
+
+.step-number {
+
+    font-family: var(--human);
+
+    color: var(--yellow);
+
+    font-size: 35px;
+
+}
+
+
+.step h3 {
+
+    margin-top: 3px;
+
+    font-family: var(--display);
+
+    font-size: 18px;
+
+}
+
+
+.step p {
+
+    margin-top: 9px;
+
+    color: #696969;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+.step:not(:last-child)::after {
+
+    content: "→";
+
+    position: absolute;
+
+    right: -30px;
+
+    top: 25px;
+
+    color: #333;
+
+    font-size: 20px;
+
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq {
+
+    width: min(780px, 100%);
+
+    margin: auto;
+
+}
+
+
+.faq-item {
+
+    border-bottom: 1px solid var(--line);
+
+}
+
+
+.faq-question {
+
+    width: 100%;
+
+    padding: 22px 0;
+
+    background: transparent;
+
+    border: 0;
+
+    color: #ddd;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-family: var(--display);
+
+    font-size: 14px;
+
+}
+
+
+.faq-plus {
+
+    color: var(--yellow);
+
+    font-size: 20px;
+
+    transition:
+        transform .25s ease;
+
+}
+
+
+.faq-answer {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height .35s ease;
+
+}
+
+
+.faq-answer p {
+
+    padding:
+        0 30px 22px 0;
+
+    color: #696969;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+.faq-item.active .faq-plus {
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+.faq-item.active .faq-answer {
+
+    max-height: 300px;
+
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+
+    padding:
+        130px 20px 150px;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+
+.final-cta .scribble {
+
+    display: inline-block;
+
+    color: var(--yellow);
+
+    font-family: var(--human);
+
+    font-size: 25px;
+
+    transform: rotate(-3deg);
+
+}
+
+
+.final-cta h2 {
+
+    margin-top: 5px;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        42px,
+        7vw,
+        78px
+    );
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+}
+
+
+.final-cta p {
+
+    max-width: 520px;
+
+    margin: 20px auto 30px;
+
+    color: #707070;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    border-top: 1px solid var(--line);
+
+    padding:
+        35px 20px;
+
+}
+
+
+.footer-inner {
+
+    width: min(1120px, 100%);
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.footer-copy {
+
+    color: #555;
+
+    font-size: 10px;
+
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    gap: 20px;
+
+}
+
+
+.footer-links a {
+
+    color: #666;
+
+    font-size: 10px;
+
+}
+
+
+.footer-links a:hover {
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+
+    .hero {
+
+        min-height: 780px;
+
+        padding-top: 125px;
+
+    }
+
+
+    .hero h1 {
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .preview-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .preview-left {
+
+        padding: 35px;
+
+    }
+
+
+    .preview-right {
+
+        padding:
+            0 30px 35px;
+
+    }
+
+
+    .preview {
+
+        min-height: auto;
+
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .split {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 50px;
+
+    }
+
+
+    .split.reverse {
+
+        direction: ltr;
+
+    }
+
+
+    .privacy {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+
+    }
+
+
+    .steps {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .step:not(:last-child)::after {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 580px) {
+
+    .nav-inner {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .brand-name {
+
+        font-size: 17px;
+
+    }
+
+
+    .nav-install {
+
+        padding:
+            9px 12px;
+
+        font-size: 10px;
+
+    }
+
+
+    .hero {
+
+        padding:
+            120px 16px 70px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                45px,
+                14vw,
+                68px
+            );
+
+        letter-spacing:
+            -3px;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .preview-wrap {
+
+        margin-top:
+            50px;
+
+    }
+
+
+    .preview-left {
+
+        padding:
+            30px 25px;
+
+    }
+
+
+    .preview-left h3 {
+
+        font-size:
+            27px;
+
+    }
+
+
+    .block-panel {
+
+        width:
+            100%;
+
+    }
+
+
+    .trust {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .trust-item:not(:last-child)::after {
+
+        top:
+            auto;
+
+        bottom:
+            0;
+
+        right:
+            15%;
+
+        width:
+            70%;
+
+        height:
+            1px;
+
+    }
+
+
+    .section {
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .section-title {
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .feature:nth-child(2),
+    .feature:nth-child(3),
+    .feature:nth-child(5) {
+
+        transform:
+            none;
+
+    }
+
+
+    .use-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .use:nth-child(even) {
+
+        transform:
+            none;
+
+    }
+
+
+    .big-timer {
+
+        font-size:
+            57px;
+
+    }
+
+
+    .free-box h2 {
+
+        letter-spacing:
+            -2px;
+
+    }
+
+
+    .footer-inner {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="nav" id="nav">
+
+    <div class="nav-inner">
+
+        <a
+            href="#top"
+            class="brand"
+        >
+
+            <div class="brand-mark">
+                B
+            </div>
+
+            <div class="brand-name">
+                Block<span>r</span>
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#how">
+                How it works
+            </a>
+
+            <a href="#privacy">
+                Privacy
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
+
+        </div>
+
+
+        <a
+            href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+            class="nav-install"
+            target="_blank"
+            rel="noopener"
+        >
+            Add to Edge
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main id="top">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-note">
+            less scrolling. more doing.
+        </div>
+
+
+        <h1>
+
+            Block distractions.<br>
+
+            <span class="highlight">
+                Focus on what matters.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Blockr is a free website and distraction blocker
+            designed to help you study, work, code, read,
+            and stay focused without fighting distractions
+            all day.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+                target="_blank"
+                rel="noopener"
+                class="primary-btn"
+            >
+                Add Blockr to Edge
+            </a>
+
+
+            <a
+                href="#features"
+                class="secondary-btn"
+            >
+                See how it works
+            </a>
+
+        </div>
+
+
+        <div class="hero-free">
+
+            <strong>
+                100% free
+            </strong>
+
+            &nbsp; · &nbsp;
+
+            no subscription required
+
+        </div>
+
+
+        <!-- PRODUCT PREVIEW -->
+
+        <div class="preview-wrap reveal">
+
+            <div class="preview">
+
+                <div class="browser-bar">
+
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+
+                    <div class="browser-address">
+                        distracting-website.com
+                    </div>
+
+                </div>
+
+
+                <div class="preview-content">
+
+
+                    <div class="preview-left">
+
+                        <div class="preview-logo">
+                            B
+                        </div>
+
+
+                        <h3>
+                            Maybe get back
+                            to what matters.
+                        </h3>
+
+
+                        <p>
+                            This website is blocked
+                            during your focus session.
+                            Your attention is worth more
+                            than another scroll.
+                        </p>
+
+
+                        <div class="preview-site">
+                            distracting-website.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-right">
+
+                        <div class="block-panel">
+
+                            <div class="panel-top">
+
+                                <div class="panel-title">
+                                    Focus Session
+                                </div>
+
+                                <div class="live">
+                                    ACTIVE
+                                </div>
+
+                            </div>
+
+
+                            <div class="timer">
+                                24:18
+                            </div>
+
+                            <div class="panel-label">
+                                remaining
+                            </div>
+
+
+                            <div class="fake-sites">
+
+                                <div class="fake-site">
+                                    youtube.com
+                                    <span>BLOCKED</span>
+                                </div>
+
+                                <div class="fake-site">
+                                    instagram.com
+                                    <span>BLOCKED</span>
+                                </div>
+
+                                <div class="fake-site">
+                                    reddit.com
+                                    <span>BLOCKED</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRUST
+===================================================== -->
+
+<div class="trust reveal">
+
+    <div class="trust-item">
+
+        <div class="trust-icon">
+            $
+        </div>
+
+        <strong>
+            100% Free
+        </strong>
+
+        <span>
+            No subscription required
+        </span>
+
+    </div>
+
+
+    <div class="trust-item">
+
+        <div class="trust-icon">
+            ∙
+        </div>
+
+        <strong>
+            No Ads
+        </strong>
+
+        <span>
+            A clean focus experience
+        </span>
+
+    </div>
+
+
+    <div class="trust-item">
+
+        <div class="trust-icon">
+            ◇
+        </div>
+
+        <strong>
+            Privacy Focused
+        </strong>
+
+        <span>
+            Built with a simple approach
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="section"
+    id="features"
+>
+
+    <div class="section-header reveal">
+
+        <div class="hand">
+            the useful stuff.
+        </div>
+
+        <h2 class="section-title">
+            Less distraction.<br>
+            More control.
+        </h2>
+
+        <p class="section-description">
+
+            Blockr gives you the tools to control
+            distracting websites without turning
+            productivity into another complicated
+            system.
+
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <div class="feature-icon">
+                ×
+            </div>
+
+            <h3>
+                Website Blocking
+            </h3>
+
+            <p>
+                Block distracting websites,
+                social media, entertainment,
+                gaming, news, shopping,
+                and any other site you choose.
+            </p>
+
+        </article>
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <div class="feature-icon">
+                ◷
+            </div>
+
+            <h3>
+                Timed Blocking
+            </h3>
+
+            <p>
+                Start a focus session and
+                block distractions for a
+                specific amount of time.
+            </p>
+
+        </article>
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <div class="feature-icon">
+                ◎
+            </div>
+
+            <h3>
+                Focus Sessions
+            </h3>
+
+            <p>
+                Create dedicated periods
+                for deep work, studying,
+                coding, reading, or writing.
+            </p>
+
+        </article>
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                04
+            </div>
+
+            <div class="feature-icon">
+                +
+            </div>
+
+            <h3>
+                Custom Block Lists
+            </h3>
+
+            <p>
+                Choose exactly which websites
+                you want to block and build
+                your own distraction-free setup.
+            </p>
+
+        </article>
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                05
+            </div>
+
+            <div class="feature-icon">
+                #
+            </div>
+
+            <h3>
+                Simple Productivity
+            </h3>
+
+            <p>
+                No complicated dashboards.
+                No unnecessary steps. Just
+                block distractions and focus.
+            </p>
+
+        </article>
+
+
+        <article class="feature reveal">
+
+            <div class="feature-number">
+                06
+            </div>
+
+            <div class="feature-icon">
+                ∞
+            </div>
+
+            <h3>
+                Free to Use
+            </h3>
+
+            <p>
+                Get the core Blockr experience
+                without a subscription or
+                monthly productivity bill.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WEBSITE BLOCKING
+===================================================== -->
+
+<section class="section">
+
+    <div class="split">
+
+
+        <div class="split-text reveal">
+
+            <div class="hand">
+                first things first.
+            </div>
+
+            <h2>
+                Stop the sites
+                that steal your time.
+            </h2>
+
+            <p>
+                You don't need more willpower.
+                Sometimes you just need fewer
+                opportunities to get distracted.
+
+                Blockr lets you choose the websites
+                that repeatedly pull you away from
+                studying, working, or doing the things
+                you actually care about.
+            </p>
+
+
+            <div class="hand-list">
+
+                <div>
+                    <span>✓</span>
+                    Social media
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Video and entertainment
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Gaming websites
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    News and endless scrolling
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Any distracting website
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="visual reveal">
+
+            <div class="block-visual">
+
+                <div class="block-note">
+                    nope. not now.
+                </div>
+
+
+                <div class="block-window">
+
+                    <div class="block-window-top">
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
+                    </div>
+
+
+                    <div class="block-message">
+
+                        <div class="x">
+                            ×
+                        </div>
+
+                        <h3>
+                            Distraction blocked.
+                        </h3>
+
+                        <p>
+                            Your focus session is still
+                            running. Come back when
+                            you're finished.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOCUS TIMER
+===================================================== -->
+
+<section class="section">
+
+    <div class="split reverse">
+
+
+        <div class="split-text reveal">
+
+            <div class="hand">
+                give your brain a lane.
+            </div>
+
+            <h2>
+                Focus for a while.
+                Then breathe.
+            </h2>
+
+            <p>
+                Pair website blocking with
+                focused sessions. Whether you
+                like Pomodoro-style work,
+                long deep-work sessions, or
+                simple timed focus, Blockr
+                helps you create a boundary
+                around your attention.
+            </p>
+
+
+            <div class="hand-list">
+
+                <div>
+                    <span>✓</span>
+                    Study sessions
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Deep work
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Coding sessions
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Reading and research
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="visual reveal">
+
+            <div class="timer-visual">
+
+                <small>
+                    FOCUS SESSION
+                </small>
+
+                <div class="big-timer">
+                    24:18
+                </div>
+
+                <div class="timer-bar">
+                    <span></span>
+                </div>
+
+                <div class="timer-status">
+
+                    <span>
+                        distractions blocked
+                    </span>
+
+                    <span>
+                        68%
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FREE
+===================================================== -->
+
+<section class="free-section reveal">
+
+    <div class="free-box">
+
+        <div class="free-label">
+            yep. really.
+        </div>
+
+        <h2>
+            <span>100% free.</span><br>
+            Focus without a subscription.
+        </h2>
+
+        <p>
+            Blockr is made to give you a better
+            browsing experience without forcing
+            another monthly subscription into your life.
+        </p>
+
+
+        <div class="free-points">
+
+            <div class="free-point">
+                <b>✓</b>
+                Free to use
+            </div>
+
+            <div class="free-point">
+                <b>✓</b>
+                No subscription required
+            </div>
+
+            <div class="free-point">
+                <b>✓</b>
+                No ads
+            </div>
+
+            <div class="free-point">
+                <b>✓</b>
+                Built for focus
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     USE CASES
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-header reveal">
+
+        <div class="hand">
+            wherever you need it.
+        </div>
+
+        <h2 class="section-title">
+            Made for real life.
+        </h2>
+
+        <p class="section-description">
+
+            Blockr isn't only for productivity
+            nerds. Use it anywhere the internet
+            keeps pulling your attention away.
+
+        </p>
+
+    </div>
+
+
+    <div class="use-grid">
+
+
+        <article class="use reveal">
+
+            <div class="use-tag">
+                students
+            </div>
+
+            <h3>
+                Study without the rabbit holes.
+            </h3>
+
+            <p>
+                Block social media, gaming,
+                entertainment, and other
+                distracting websites while
+                studying or preparing for exams.
+            </p>
+
+        </article>
+
+
+        <article class="use reveal">
+
+            <div class="use-tag">
+                developers
+            </div>
+
+            <h3>
+                Keep your coding flow intact.
+            </h3>
+
+            <p>
+                Stay focused while programming,
+                debugging, building projects,
+                researching, and learning new
+                technologies.
+            </p>
+
+        </article>
+
+
+        <article class="use reveal">
+
+            <div class="use-tag">
+                professionals
+            </div>
+
+            <h3>
+                Work without constant switching.
+            </h3>
+
+            <p>
+                Reduce distracting browsing
+                during office work, remote work,
+                writing, research, and important
+                projects.
+            </p>
+
+        </article>
+
+
+        <article class="use reveal">
+
+            <div class="use-tag">
+                everyone
+            </div>
+
+            <h3>
+                Take back your attention.
+            </h3>
+
+            <p>
+                You don't need to be studying
+                or working. Sometimes you simply
+                want to spend less time scrolling
+                and more time living.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRIVACY
+===================================================== -->
+
+<section
+    class="section"
+    id="privacy"
+>
+
+    <div class="privacy">
+
+
+        <div class="privacy-visual reveal">
+
+            <div class="shield">
+                ✓
+            </div>
+
+            <div class="privacy-note">
+                your data matters.
+            </div>
+
+        </div>
+
+
+        <div class="split-text reveal">
+
+            <div class="hand">
+                no weird stuff.
+            </div>
+
+            <h2>
+                Privacy should be
+                simple.
+            </h2>
+
+            <p>
+                Blockr is designed with privacy
+                in mind. A website blocker should
+                help you focus without making your
+                browsing experience unnecessarily
+                complicated.
+            </p>
+
+
+            <div class="privacy-list">
+
+
+                <div class="privacy-item">
+
+                    <div class="privacy-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            No unnecessary accounts
+                        </strong>
+
+                        <span>
+                            Keep the experience simple
+                            instead of adding another
+                            account to your life.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-item">
+
+                    <div class="privacy-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            No advertising clutter
+                        </strong>
+
+                        <span>
+                            Blockr is designed to keep
+                            your focus experience clean.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-item">
+
+                    <div class="privacy-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Transparent permissions
+                        </strong>
+
+                        <span>
+                            Blockr only needs permissions
+                            required for its website
+                            blocking functionality.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section
+    class="section"
+    id="how"
+>
+
+    <div class="section-header reveal">
+
+        <div class="hand">
+            no manual required.
+        </div>
+
+        <h2 class="section-title">
+            Three steps.
+            That's it.
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step reveal">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Choose your distractions.
+            </h3>
+
+            <p>
+                Add the websites that usually
+                steal your attention.
+            </p>
+
+        </div>
+
+
+        <div class="step reveal">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Start a focus session.
+            </h3>
+
+            <p>
+                Set your session and let
+                Blockr handle the distractions.
+            </p>
+
+        </div>
+
+
+        <div class="step reveal">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Do the thing.
+            </h3>
+
+            <p>
+                Study. Work. Code. Read.
+                Whatever actually matters.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+    class="section"
+    id="faq"
+>
+
+    <div class="section-header reveal">
+
+        <div class="hand">
+            questions, questions.
+        </div>
+
+        <h2 class="section-title">
+            Frequently asked.
+        </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                Is Blockr really free?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Yes. Blockr is designed as a
+                    free website and distraction
+                    blocker. There is no subscription
+                    required for the core experience.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                What websites can Blockr block?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    You can use Blockr to block
+                    distracting websites including
+                    social media, gaming, entertainment,
+                    video platforms, news, shopping,
+                    and other websites you choose.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                Can I use Blockr for studying?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Yes. Blockr is designed for study
+                    sessions, homework, exam preparation,
+                    online learning, reading, research,
+                    and other situations where you need
+                    fewer digital distractions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                Does Blockr have a focus timer?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Blockr supports timed blocking and
+                    focus sessions so you can combine
+                    website blocking with structured
+                    periods of concentration.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                Does Blockr show ads?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    Blockr is designed as a clean,
+                    distraction-free productivity
+                    experience without advertising
+                    clutter.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item reveal">
+
+            <button class="faq-question">
+
+                Which browser does Blockr support?
+
+                <span class="faq-plus">
+                    +
+                </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+                <p>
+                    The current Blockr extension is
+                    built for Microsoft Edge. Check
+                    the official Edge Add-ons listing
+                    for the latest compatibility
+                    information.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="final-cta reveal">
+
+    <div class="scribble">
+        one less distraction.
+    </div>
+
+    <h2>
+        Ready to focus?
+    </h2>
+
+    <p>
+        Install Blockr, choose what you want
+        to block, and get back to what matters.
+    </p>
+
+
+    <a
+        href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+        target="_blank"
+        rel="noopener"
+        class="primary-btn"
+    >
+        Get Blockr for Edge
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-copy">
+
+            © <span id="year"></span>
+            Blockr. By Omar Samir.
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   NAV SCROLL
+========================================================= */
+
+const nav =
+    document.getElementById("nav");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (window.scrollY > 20) {
+
+            nav.classList.add("scrolled");
+
+        } else {
+
+            nav.classList.remove("scrolled");
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealItems.forEach(
+    item => observer.observe(item)
+);
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+const faqQuestions =
+    document.querySelectorAll(
+        ".faq-question"
+    );
+
+
+faqQuestions.forEach(
+    question => {
+
+        question.addEventListener(
+            "click",
+            () => {
+
+                const item =
+                    question.closest(
+                        ".faq-item"
+                    );
+
+
+                const wasActive =
+                    item.classList.contains(
+                        "active"
+                    );
+
+
+                document
+                    .querySelectorAll(
+                        ".faq-item.active"
+                    )
+                    .forEach(
+                        activeItem => {
+
+                            activeItem.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                if (!wasActive) {
+
+                    item.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SMOOTH ANCHOR FALLBACK
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+
+                        return;
+
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
