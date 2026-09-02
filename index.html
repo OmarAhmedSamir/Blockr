@@ -8,8 +8,6 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    
-
     <title>
         Blockr – Free Website & Distraction Blocker
     </title>
@@ -116,7 +114,7 @@
         "@type": "SoftwareApplication",
         "name": "Blockr",
         "applicationCategory": "BrowserApplication",
-        "operatingSystem": "Microsoft Edge",
+        "operatingSystem": "Microsoft Edge, Mozilla Firefox",
         "description": "Free website and distraction blocker designed to help users focus, study, work, and improve productivity.",
         "offers": {
             "@type": "Offer",
@@ -441,6 +439,17 @@ body::before {
 }
 
 
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
 .nav-install {
 
     padding: 10px 16px;
@@ -468,6 +477,41 @@ body::before {
 
     box-shadow:
         0 10px 30px rgba(255,216,77,.12);
+
+}
+
+
+.nav-firefox {
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    color: #ccc;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.nav-firefox:hover {
+
+    color: white;
+
+    border-color:
+        rgba(255,216,77,.3);
+
+    transform:
+        translateY(-2px);
 
 }
 
@@ -2257,6 +2301,21 @@ body::before {
 }
 
 
+.final-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -2359,6 +2418,24 @@ footer {
     .nav-links {
 
         display: none;
+
+    }
+
+
+    .nav-actions {
+
+        gap: 6px;
+
+    }
+
+
+    .nav-install,
+    .nav-firefox {
+
+        padding:
+            9px 11px;
+
+        font-size: 10px;
 
     }
 
@@ -2479,12 +2556,27 @@ footer {
     }
 
 
-    .nav-install {
+    .nav-actions {
+
+        gap: 5px;
+
+    }
+
+
+    .nav-install,
+    .nav-firefox {
 
         padding:
-            9px 12px;
+            8px 9px;
 
-        font-size: 10px;
+        font-size: 9px;
+
+    }
+
+
+    .nav-firefox {
+
+        display: none;
 
     }
 
@@ -2745,14 +2837,32 @@ footer {
         </div>
 
 
-        <a
-            href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
-            class="nav-install"
-            target="_blank"
-            rel="noopener"
-        >
-            Add to Edge
-        </a>
+        <div class="nav-actions">
+
+            <!-- EDGE -->
+
+            <a
+                href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+                class="nav-install"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Add to Edge
+            </a>
+
+
+            <!-- FIREFOX -->
+
+            <a
+                href="https://addons.mozilla.org/en-US/firefox/addon/blockr-site-blocker/"
+                class="nav-firefox"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Firefox
+            </a>
+
+        </div>
 
     </div>
 
@@ -2798,13 +2908,27 @@ footer {
 
         <div class="hero-actions">
 
+            <!-- EDGE -->
+
             <a
                 href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="primary-btn"
             >
                 Add Blockr to Edge
+            </a>
+
+
+            <!-- FIREFOX -->
+
+            <a
+                href="https://addons.mozilla.org/en-US/firefox/addon/blockr-site-blocker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="secondary-btn"
+            >
+                Get Blockr for Firefox
             </a>
 
 
@@ -3929,7 +4053,7 @@ footer {
 
             <button class="faq-question">
 
-                Which browser does Blockr support?
+                Which browsers does Blockr support?
 
                 <span class="faq-plus">
                     +
@@ -3940,11 +4064,34 @@ footer {
             <div class="faq-answer">
 
                 <p>
-                    The current Blockr extension is
-                    built for Microsoft Edge. Check
-                    the official Edge Add-ons listing
-                    for the latest compatibility
-                    information.
+                    Blockr is currently available for
+                    Microsoft Edge and Mozilla Firefox.
+                    You can install Blockr directly from
+                    the official browser extension stores.
+                </p>
+
+                <p style="margin-top: 12px;">
+
+                    <a
+                        href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="color: var(--yellow);"
+                    >
+                        Get Blockr for Edge →
+                    </a>
+
+                    <br>
+
+                    <a
+                        href="https://addons.mozilla.org/en-US/firefox/addon/blockr-site-blocker/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="color: var(--yellow);"
+                    >
+                        Get Blockr for Firefox →
+                    </a>
+
                 </p>
 
             </div>
@@ -3977,14 +4124,32 @@ footer {
     </p>
 
 
-    <a
-        href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
-        target="_blank"
-        rel="noopener"
-        class="primary-btn"
-    >
-        Get Blockr for Edge
-    </a>
+    <div class="final-actions">
+
+        <!-- EDGE -->
+
+        <a
+            href="https://microsoftedge.microsoft.com/addons/detail/blockr-%E2%80%93-website-distra/fllgfmohjnlpahpdpkoeghpokfnhmgdd"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="primary-btn"
+        >
+            Get Blockr for Edge
+        </a>
+
+
+        <!-- FIREFOX -->
+
+        <a
+            href="https://addons.mozilla.org/en-US/firefox/addon/blockr-site-blocker/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="secondary-btn"
+        >
+            Get Blockr for Firefox
+        </a>
+
+    </div>
 
 </section>
 
@@ -4229,3 +4394,4 @@ document
 
 </body>
 </html>
+
